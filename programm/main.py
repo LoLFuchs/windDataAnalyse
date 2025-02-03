@@ -2,19 +2,38 @@ import csv
 import matplotlib.pyplot as plt
 
 # CSV-Datei lesen
-with open(r'C:\Users\steve\Documents\Programmieren\windDataAnalyse\data\test2.csv', 'r') as csvfile:
+with open(r'C:\Users\steve\Documents\Programmieren\windDataAnalyse\data\Foehn2.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
     next(reader)  # Skip the header row
-    x = []
-    y = []
+    time = []
+    voltage = []
     for row in reader:
-        x.append(float(row[0]))
-        y.append(float(row[1]))
-    plt.plot(x, y, marker="o")
+        time.append(float(row[0]))
+        voltage.append(float(row[1]))
+    plt.plot(time, voltage, marker="o")
+
+
+voltageMittelwert = 0
+for x in voltage:
+    voltageMittelwert += x
+    
+voltageMittelwert = voltageMittelwert / len(voltage)
+print(f"voltageMittelwert: {voltageMittelwert}")
+
+with open(r'C:\Users\steve\Documents\Programmieren\windDataAnalyse\data\Korrekt1.csv', 'r') as csvfile:
+    reader = csv.reader(csvfile)
+    next(reader)
+    i = 0
+    for row in reader:
+        i += 1
+        
+        
+        if i == 10:
+            print(2)
 
 
 # Achsenbeschriftungen und Titel hinzufügen
-plt.xlabel('Zeit (s)')
+plt.xlabel('Zeit (ms)')
 plt.ylabel('Spannung (V)')
 plt.title('Spannung über Zeit')
 
