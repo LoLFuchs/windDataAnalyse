@@ -3,7 +3,7 @@ import serial, time
 def readserial(comport, baudrate):
 
     start = time.time_ns()
-    f = open("Korrekt1.csv", "w")
+    f = open("Foehn1.csv", "w")
     f.write("Zeit in ms, Spannung in Einheitslos\n")
     ser = serial.Serial(comport, baudrate, timeout=0.1)         # 1/timeout is the frequency at which the port is read
 
