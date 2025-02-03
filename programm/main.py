@@ -1,19 +1,17 @@
 import csv
-
 import matplotlib.pyplot as plt
 
 # CSV-Datei lesen
-with open('/c:/Users/steve/Documents/Programmieren/windDataAnalyse/programm/data.csv', newline='') as csvfile:
-    reader = csv.reader(csvfile, delimiter=';')
-    next(reader)  # Überspringe die Kopfzeile
-    zeit = []
-    spannung = []
+with open(r'C:\Users\steve\Documents\Programmieren\windDataAnalyse\data\test2.csv', 'r') as csvfile:
+    reader = csv.reader(csvfile)
+    next(reader)  # Skip the header row
+    x = []
+    y = []
     for row in reader:
-        zeit.append(int(row[0]))
-        spannung.append(float(row[1].replace(',', '.')))
+        x.append(float(row[0]))
+        y.append(float(row[1]))
+    plt.plot(x, y, marker="o")
 
-# Plot erstellen
-plt.plot(zeit, spannung, marker='o')
 
 # Achsenbeschriftungen und Titel hinzufügen
 plt.xlabel('Zeit (s)')
