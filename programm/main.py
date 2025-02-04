@@ -2,7 +2,7 @@ import csv
 import matplotlib.pyplot as plt
 
 # CSV-Datei lesen
-with open(r'../data/UnwuchtInter.csv', 'r') as csvfile:
+with open(r'../data/Unwucht.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
     next(reader)  # Skip the header row
     time = []
