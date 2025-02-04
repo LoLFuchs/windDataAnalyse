@@ -12,13 +12,6 @@ def maintain_multiple_values(n, keys):
     values_dict = {key: deque(maxlen=n) for key in keys}
     
     def add_value(key, new_value=None):
-        """
-        Fügt den neuen Wert zum entsprechenden Deque hinzu und gibt das Array für den Schlüssel zurück.
-        
-        :param key: Der Schlüssel (z.B. 'time' oder 'voltage')
-        :param new_value: Der neue Wert, der dem Array hinzugefügt werden soll.
-        :return: Das aktuelle Array (Liste) für den angegebenen Schlüssel.
-        """
         if key in values_dict:
             if new_value == None:
                 return list(values_dict)
@@ -35,12 +28,6 @@ time_value = maintain_multiple_values(numValues, "time")
 voltage_value = maintain_multiple_values(numValues, "voltage")
 
 def moving_average(values):
-    """
-    Berechnet das durchschnittliche Mittel aller Werte in der Liste.
-    
-    :param values: Eine Liste von Zahlen, aus denen das durchschnittliche Mittel berechnet werden soll.
-    :return: Der durchschnittliche Mittelwert aller Werte in der Liste.
-    """
     if not values:
         raise ValueError("Die Liste darf nicht leer sein.")
     
