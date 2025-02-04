@@ -2,7 +2,7 @@ import csv
 import matplotlib.pyplot as plt
 
 # CSV-Datei lesen
-with open(r'C:\Users\steve\Documents\Programmieren\windDataAnalyse\data\Foehn2.csv', 'r') as csvfile:
+with open(r'../data/UnwuchtInter.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
     next(reader)  # Skip the header row
     time = []
@@ -20,7 +20,7 @@ for x in voltage:
 voltageMittelwert = voltageMittelwert / len(voltage)
 print(f"voltageMittelwert: {voltageMittelwert}")
 
-with open(r'C:\Users\steve\Documents\Programmieren\windDataAnalyse\data\Korrekt1.csv', 'r') as csvfile:
+with open(r'../data/Korrekt1.csv', 'r') as csvfile:
     reader = csv.reader(csvfile)
     next(reader)
     i = 0

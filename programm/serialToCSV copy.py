@@ -8,14 +8,6 @@ import matplotlib.pyplot as plt
 
 
 def maintain_multiple_values(n, keys):
-    """
-    Erstellt eine Funktion, die mehrere Deques für verschiedene Arrays verwaltet, 
-    wobei jeweils nur die letzten n Werte gespeichert werden.
-    
-    :param n: Die Anzahl der letzten Werte, die für jede Messgröße gespeichert werden sollen.
-    :param keys: Eine Liste der Namen der Arrays/Messgrößen (Schlüssel für das Dictionary).
-    :return: Eine Funktion, die neue Werte hinzufügt und die aktuellen Arrays zurückgibt.
-    """
     # Ein Dictionary für mehrere Deques
     values_dict = {key: deque(maxlen=n) for key in keys}
     
@@ -57,7 +49,7 @@ def moving_average(values):
 def readserial(comport, baudrate, n, linePlot, ax):
 
     start = time.time_ns()
-    f = open("../data/Foehn3.csv", "w")
+    f = open("../data/Unwucht.csv", "w")
     f.write("Zeit in ms, Spannung in Einheitslos\n")
     ser = serial.Serial(comport, baudrate, timeout=0.1)         # 1/timeout is the frequency at which the port is read
     last_update = start
@@ -68,9 +60,9 @@ def readserial(comport, baudrate, n, linePlot, ax):
             if data:
                 print(data)
                 slope = int(data) - moving_average(add_value("add", int(data)))
-                if abs(slope) > 20:
+                if abs(slope) > 50:
                     print("ANOMALIE!!!")
-                    f.write("ANOMALIE!!!\n")
+                    # f.write("ANOMALIE!!!\n")
                 line = "" + str(time.time_ns() - start) + "," + data + "\n"
                 f.write(line)
 
